@@ -18,7 +18,7 @@ from django.urls import path
 from django.conf import settings
 from django.urls import include, path
 
-
+#testing
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
