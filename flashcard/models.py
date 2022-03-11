@@ -6,3 +6,4 @@ class User(AbstractUser):
         return self.username
 
         #test model
+        #test also
