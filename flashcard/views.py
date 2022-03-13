@@ -1,11 +1,8 @@
 from django.shortcuts import render
-from xml.sax.handler import all_properties
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.contrib import messages
-from .models import Album, Artist, Genre
-from .forms import AlbumForm
-from .view_helpers import album_is_favorited
+from .models import Deck, Card
+from .forms import DeckForm, CardForm
 
 
 def home(request):
@@ -40,6 +37,3 @@ def delete_card(request, pk):
 
 def delete_deck(request, pk):
     pass
-
-def check_admin_user(user):
-    return user.is_staff
