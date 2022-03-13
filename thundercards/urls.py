@@ -18,39 +18,53 @@ from django.urls import path
 from django.conf import settings
 from django.urls import include, path
 
-from . import views as cards_views
+from flashcard import views as cards_views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    # from django-registration-redux
+    path('accounts/', include('registration.backends.default.urls')),
+
     #shows the welcome page to a user that is not logged in
+    # alex
     path('',cards_views.home, name='home'), 
 
     #shows user all of the decks
+    # ke
     path("decks/", cards_views.list_decks, name="list_decks"),
 
     #allows user to add a new card to the deck
+    # ke
     path("decks/<int:pk>/add_card", cards_views.add_card, name="add_card"), 
 
-    #allows user to add a new card to the deck
+    # show a list of all the cards
+    # ryan
     path("decks/<int:pk>/list_cards", cards_views.list_cards, name="list_cards"), 
 
     #allows user to delete a deck
+    # alex
     path("decks/<int:pk>/delete_deck", cards_views.delete_deck, name="delete_deck"), 
 
-        #allows user to edit a deck
+    #allows user to edit a deck
+    # ryan
     path("decks/<int:pk>/edit_deck", cards_views.edit_deck, name="edit_deck"), 
 
     #allows user to add a new deck 
+    # ke
     path("decks/add_deck", cards_views.add_deck, name="add_deck"), 
     
     #for editting a card in a deck
+    # alex
     path(
         "decks/<int:deck_pk>/<int:card_pk>/edit_card/", 
         cards_views.edit_card,
         name="edit_card",
     ),
+
     #allows user to delete a card
+    # ryan
     path(
         "decks/<int:deck_pk>/<int:pk>/delete/", 
         cards_views.delete_card,
