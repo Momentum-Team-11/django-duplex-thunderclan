@@ -6,15 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block meta %}{% endblock meta %}
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma-tooltip/1.2.0/bulma-tooltip.min.css">
     <title>{% block title %}{% endblock title %}</title>
     {% block javascript %}{% endblock javascript %}
 </head>
 
+
 <body class="sans-serif">
-    <header class="header bg-navy b--white-10 flex justify-between">
+    <header class="header bg-navy b--white-10 flex items-center justify-between">
         <a href={% url "home" %} class="f3 lh-title  moon-gray items-center no-underline">
-            <h1 class="f3 lh-title moon-gray items-center"><i class="fas fa-cloud moon-gray ph2"></i>Thundercards</h1>
+            <h1 class="f3 lh-title moon-gray items-center"><i class="fa-solid fa-bolt-lightning moon-gray ph2"></i>Thundercards</h1>
         </a>
         <nav class="flex bb">
             <div class="flex-grow pa3 flex items-center">
