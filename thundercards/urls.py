@@ -24,6 +24,9 @@ from flashcard import views as cards_views
 urlpatterns = [
     path('admin/', admin.site.urls),
 
+    # base url added to see if base.html is working
+    path('base/', cards_views.base, name='base'), 
+
     # from django-registration-redux
     path('accounts/', include('registration.backends.default.urls')),
 
