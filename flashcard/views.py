@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from .models import Deck, Card
 from .forms import DeckForm, CardForm
 
+def base(request):
+    return render(request, 'base.html')
 
 def home(request):
     pass
