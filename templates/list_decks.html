@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Welcome, {{ user.username }}!</h1>
+<a>Card Decks</a>
+<a>New Decks</a>
+    {% for deck in decks %}
+        <div class="card">   
+            <h2>{{ deck.title }}</h2>
+            <button>Start</button>
+            <a>Edit</a>
+            <a>Delete</a>
+        </div>
+    {% endfor %}
+    <i class="fa-solid fa-circle-plus fa-2x" style="color:green"></i> 
+    
+{% endblock content %}
