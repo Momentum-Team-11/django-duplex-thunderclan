@@ -9,9 +9,9 @@
     <!-- display title -->
     <h4 class="title is-3 has-text-centered mt-4 mb-5">Cards in {{ deck }}</h4>
     <div class="container has-text-centered mt-2 mb-6">
-        <button class="button is-primary">
+        <a href="{% url 'add_card' pk=deck.id %}"><button class="button is-primary">
             Add Card  +
-        </button>
+        </button></a>
     </div>
     <!-- list of cards -->
     <div class="columns is-multiline">
@@ -31,9 +31,6 @@
     </div>
 </div>
 
-<div class="container mt-6">
-    <div><a href={% url 'base' %}>Return to Base</a></div>
-</div>
 
 <!-- <div> -->
     <!-- <h2>Variables available in template:</h2> -->

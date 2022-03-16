@@ -24,14 +24,14 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # base url added to see if base.html is working  delete this later
-    path('base/', cards_views.base, name='base'), 
+    #path('base/', cards_views.base, name='base'), 
 
     # from django-registration-redux
-    #path('accounts/', include('registration.backends.default.urls')),
+    path('accounts/', include('registration.backends.default.urls')),
 
     #shows the welcome page to a user that is not logged in
     # alex
-    #path('',cards_views.home, name='home'), 
+    path('',cards_views.home, name='home'), 
 
     #shows user all of the decks
     # ke
@@ -39,7 +39,7 @@ urlpatterns = [
 
     #allows user to add a new card to the deck
     # ke
-    #path("decks/<int:pk>/add_card", cards_views.add_card, name="add_card"), 
+    path("decks/<int:pk>/add_card/", cards_views.add_card, name="add_card"), 
 
     # show a list of all the cards
     # ryan

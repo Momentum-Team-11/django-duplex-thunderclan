@@ -1,17 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Card Deck Details</h2>
+<h2>Add Card</h2>
 
 <div class="form">
 
-    <form action="{% url 'add_deck' %}" method="POST" class="post-form">{% csrf_token %}
-        {{ deck_form.as_p }}
+    <form action="{% url 'add_card' pk=deck.pk %}" method="POST" class="post-form">{% csrf_token %}
+        {{ card_form.as_p }}
         
         
         <button type="submit" class="save btn btn-secondary">Save</button>
     </form>
-    
     <a href="{% url 'list_decks' %}"><br>
 </div>
 
