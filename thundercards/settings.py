@@ -161,4 +161,6 @@ AUTH_USER_MODEL = "flashcard.User"
 
 
 ACCOUNT_ACTIVATION_DAYS = 7
-LOGIN_REDIRECT_URL = "/decks/"
+LOGIN_REDIRECT_URL = "home"
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ACCOUNT_EMAIL_VERIFICATION = "none"
