@@ -7,7 +7,7 @@ from .forms import DeckForm, CardForm
 #def homepage(request):
     # show a homepage
     #if request.user.is_authenticated:
-     #   return redirect("list_decks")
+    #   return redirect("list_decks")
     #return render(request, "decks/homepage.html")
 
 def base(request):
