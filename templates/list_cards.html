@@ -1,9 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>
-    Hello, {{ name }}!! ... Here is a message from views: {{ message }}
-</h1>
-<a href="http://www.github.com">GitHub Link</a>
-<div><a href= {% url 'base' %} >Return to Base Page</a></div>
-{% endblock %}
+<div class="container">
+    <h1>List of all Cards in Deck</h1>
+    <a href="http://www.github.com">GitHub Link</a>
+    <div><a href={% url 'base' %}>Return to Base Page</a></div>
+    <div>
+        <h2>The current deck is:</h2>
+        <p>{{ deck }}</p>
+        <p>{{ deck.user }}</p>
+        <p>{{ deck.user_id }}</p>
+        <p>{{ deck.pk }}</p>
+        <p>{{ deck.id }}</p>
+        <p>{{ deck.cards.all }}</p>
+    </div>
+</div>
+{% endblock %}<h1>

@@ -16,8 +16,24 @@ def base(request):
 def home(request):
     pass
 
-def list_cards(request):
-    pass
+@login_required
+def list_cards(request, deck_pk):
+    # deck = get_object_or_404(Deck, pk=pk)
+    deck = Deck.objects.get(pk=deck_pk)
+    
+    # primary_key = pk
+
+    string = "Hey hey from my template!?!"
+    link = 'https://momentum-team-11.github.io/'
+    
+    template =  'list_cards.html'
+    context = {
+        "deck": deck,
+        "name": "Ryan",
+        "message": string,
+        "link_url": link,
+    }
+    return render(request, template, context)
 
 @login_required
 def list_decks(request):
