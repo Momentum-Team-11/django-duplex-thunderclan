@@ -4,15 +4,6 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from .models import Deck, Card, User
 from .forms import DeckForm, CardForm
 
-#def homepage(request):
-    # show a homepage
-    #if request.user.is_authenticated:
-    #   return redirect("list_decks")
-    #return render(request, "decks/homepage.html")
-
-def base(request):
-    return render(request, 'base.html')
-
 def home(request):
     if request.user.is_authenticated:
         return redirect ('list_decks')
@@ -33,23 +24,31 @@ def list_cards(request, deck_pk):
     }
     return render(request, template, context)
 
+
 @login_required
 def list_decks(request):
     decks = Deck.objects.all()
     user = request.user
-        
+
     return render(request, 'list_decks.html', {"decks": decks, "user": user})
 
-    
 
 def add_card(request):
     pass
 
+# use breakpoint, print variables to see data in the terminal
+
+@login_required
 def add_deck(request):
-    pass
+    form = DeckForm()
+    user = request.user
+    
+    return render(request, 'add_deck.html', {"form": form, "user": user})
+
 
 def show_card(request, pk):
     pass
+
 
 def show_deck(request, pk):
     pass
@@ -72,11 +71,14 @@ def edit_card(request, pk, slug):
 
 
 
+
 def edit_deck(request, pk):
     pass
 
+
 def delete_card(request, pk):
     pass
+
 
 def delete_deck(request, pk):
     deck = get_object_or_404(Deck, pk=pk)
