@@ -43,7 +43,7 @@ urlpatterns = [
 
     # show a list of all the cards
     # ryan
-    path("decks/<int:deck_pk>/list_cards/", cards_views.list_cards, name="list_cards"), 
+    path("decks/<int:deck_pk>/list/", cards_views.list_cards, name="list_cards"), 
 
     #allows user to delete a deck
     # alex
