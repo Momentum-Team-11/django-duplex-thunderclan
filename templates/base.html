@@ -17,25 +17,16 @@
 <body class="sans-serif">
     <header class="header bg-navy b--white-10 flex items-center justify-between">
         <a href={% url "home" %} class="f3 lh-title  moon-gray items-center no-underline">
-            <h1 class="f3 lh-title moon-gray items-center"><i class="fa-solid fa-bolt-lightning moon-gray ph2"></i>Thundercards</h1>
+            <h1 class="f3 lh-title moon-gray items-center ml2"><i class="fa-solid fa-bolt-lightning moon-gray ph2 mr1"></i>Thundercards</h1>
         </a>
         <nav class="flex bb">
             <div class="flex-grow pa3 flex items-center">
-                <!-- for setup only -->
-                <a href={% url 'auth_logout' %} class="moon-gray ml3 no-underline">Log Out</a>
-                <a href={% url 'registration_register' %} class="moon-gray ml3 no-underline">Register</a>
-                <a href={% url 'auth_login' %} class="moon-gray ml2 no-underline">Log In</a>
-                
-                <!-- once we have set up authentication -->
-                <!-- // if you are logged in -->
-                <!-- {% if user.is_authenticated %} -->
-                <!-- <a href={% url 'auth_logout' %} class="moon-gray ml3">Log Out</a> -->
-                <!-- // if you are not logged in -->
-                <!-- {% else %} -->
-                <!-- <a href={% url 'registration_register' %} class="moon-gray ml3">Register</a> -->
-                <!-- <a href={% url 'auth_login' %} class="moon-gray ml2">Log In</a> -->
-                <!-- {% endif %} -->
-
+                {% if user.is_authenticated %}
+                <a href={% url 'auth_logout' %} class="moon-gray ml3">Log Out</a>
+                {% else %}
+                <a href={% url 'registration_register' %} class="moon-gray ml3">Register</a>
+                <a href={% url 'auth_login' %} class="moon-gray ml2">Log In</a>
+                {% endif %}
             </div>
         </nav>
     </header>

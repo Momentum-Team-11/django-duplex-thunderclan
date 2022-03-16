@@ -7,7 +7,7 @@ from .forms import DeckForm, CardForm
 #def homepage(request):
     # show a homepage
     #if request.user.is_authenticated:
-     #   return redirect("list_decks")
+    #   return redirect("list_decks")
     #return render(request, "decks/homepage.html")
 
 def base(request):
@@ -19,8 +19,19 @@ def home(request):
     else:
         return render (request, 'flashcard/home.html')
 
-def list_cards(request):
-    pass
+@login_required
+def list_cards(request, deck_pk):
+    deck = get_object_or_404(Deck, pk=deck_pk)
+    # deck = Deck.objects.get(pk=deck_pk)
+    # cards = Card.objects.all().filter(cards_deck_fk=deck.id)
+    cards = Card.objects.all()
+    
+    template =  'list_cards.html'
+    context = {
+        "deck": deck,
+        "cards": cards,
+    }
+    return render(request, template, context)
 
 @login_required
 def list_decks(request):

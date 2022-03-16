@@ -14,7 +14,6 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
 from django.conf import settings
 from django.urls import include, path
 
@@ -24,7 +23,7 @@ from flashcard import views as cards_views
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    # base url added to see if base.html is working
+    # base url added to see if base.html is working  delete this later
     path('base/', cards_views.base, name='base'), 
 
     # from django-registration-redux
@@ -44,7 +43,7 @@ urlpatterns = [
 
     # show a list of all the cards
     # ryan
-    path("decks/<int:pk>/list_cards", cards_views.list_cards, name="list_cards"), 
+    path("decks/<int:deck_pk>/list_cards/", cards_views.list_cards, name="list_cards"), 
 
     #allows user to delete a deck
     # alex
