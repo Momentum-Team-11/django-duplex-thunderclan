@@ -73,6 +73,7 @@ def edit_card(request, pk, slug):
 
 
 def edit_deck(request, pk):
+    
     pass
 
 def delete_card(request, pk):
