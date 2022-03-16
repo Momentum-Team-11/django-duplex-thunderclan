@@ -14,7 +14,10 @@ def base(request):
     return render(request, 'base.html')
 
 def home(request):
-    pass
+    if request.user.is_authenticated:
+        return redirect ('list_decks')
+    else:
+        return render (request, 'flashcard/home.html')
 
 def list_cards(request):
     pass
@@ -40,8 +43,23 @@ def show_card(request, pk):
 def show_deck(request, pk):
     pass
 
-def edit_card(request, pk):
-    pass
+
+
+def edit_card(request, pk, slug):
+    deck = get_object_or_404(Deck, slug=slug)
+    flashcard = get_object_or_404(Card, pk=pk)
+    if request.method == 'POST':
+        form = CardForm(request.POST, instance =flashcard)
+        if form.is_valid():
+            flashcard.deck_id = deck.id
+            flashcard.save()
+            return redirect (to='list_decks', slug=deck.slug)
+    else:
+        form = CardForm(instance=flashcard)
+    return render(request, 'flashcard/edit_card.html', {"form": form, 'deck': deck, 'flashcard':flashcard})
+
+
+
 
 def edit_deck(request, pk):
     pass
@@ -50,4 +68,8 @@ def delete_card(request, pk):
     pass
 
 def delete_deck(request, pk):
-    pass
+    deck = get_object_or_404(Deck, pk=pk)
+    if request.method == 'POST':
+        deck.delete()
+        return redirect(to='list_deck')
+    return render(request, 'delete_deck.html'),{"deck":deck}
