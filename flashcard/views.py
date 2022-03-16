@@ -22,9 +22,7 @@ def home(request):
 @login_required
 def list_cards(request, deck_pk):
     deck = get_object_or_404(Deck, pk=deck_pk)
-    # deck = Deck.objects.get(pk=deck_pk)
-    # cards = Card.objects.all().filter(cards_deck_fk=deck.id)
-    cards = Card.objects.all()
+    cards = Card.objects.all().filter(deck=deck)
     
     template =  'list_cards.html'
     context = {
@@ -71,10 +69,26 @@ def edit_card(request, pk, slug):
 
 
 
-
-def edit_deck(request, pk):
-    
-    pass
+@login_required
+def edit_deck(request, deck_pk):
+    deck = get_object_or_404(Deck, pk=deck_pk)
+    user = request.user
+    template = 'edit_deck.html'
+    if request.method == 'POST':
+        form = DeckForm(request.POST, instance=deck)
+        if form.is_valid():
+            deck = form.save(commit=False)
+            deck.user = user
+            deck.save()
+            return redirect(to='list_decks')
+    else:
+        form = DeckForm(instance=deck)
+    context = {
+        'form': form,
+        'deck': deck,
+        'user': user,
+    }
+    return render(request, template, context)
 
 def delete_card(request, pk):
     pass

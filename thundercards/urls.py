@@ -51,7 +51,7 @@ urlpatterns = [
 
     #allows user to edit a deck
     # ryan
-    path("decks/<int:pk>/edit_deck", cards_views.edit_deck, name="edit_deck"), 
+    path("decks/<int:deck_pk>/edit", cards_views.edit_deck, name="edit_deck"), 
 
     #allows user to add a new deck 
     # ke
