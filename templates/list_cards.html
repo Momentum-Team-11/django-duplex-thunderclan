@@ -3,38 +3,49 @@
 {% block content %}
 <div class="container ">
     <h1 class="title is-3">Welcome, {{deck.user}}!</h1>
-    <div>
-        <h2>The current deck is:</h2>
-        <p>{{ deck }}</p>
-        <p>{{ deck.user }}</p>
-        <p>{{ deck.user_id }}</p>
-        <p>{{ deck.pk }}</p>
-        <p>{{ deck.id }}</p>
-        <p>{{ deck.cards.all }}</p>
-    </div>
 </div>
 
 <div class="container">
     <!-- display title -->
-    <h4 class="title is-3 has-text-centered">Cards in Deck 1</h4>
+    <h4 class="title is-3 has-text-centered mt-4 mb-6">Cards in {{ deck }}</h4>
     <!-- list of cards -->
     <div class="columns is-multiline">
-        <div class="column is-one-quarter">
+        {% for card in cards %}
+        <div class="column is-one-fourth">
             <div class="card pb-5">
                 <div class="card-content">
-                    <p class="title is-4 has-text-centered">Card 1</p>
-                    <div class="box">Question</div>
-                    <div class="box">Answer</div>
+                    <p class="title is-4 has-text-centered">Card {{ card.id }}</p>
+                    <div class="box">{{ card.question }}</div>
+                    <div class="box">{{ card.answer }}</div>
                     <button class="button is-danger is-small is-pulled-right">Delete</button>
                     <button class="button is-primary is-small is-pulled-right mr-2">Edit</button>
                 </div>
             </div>
         </div>
+        {% endfor %}
     </div>
 </div>
-
 
 <div class="container mt-6">
     <div><a href={% url 'base' %}>Return to Base</a></div>
 </div>
+
+<!-- <div> -->
+    <!-- <h2>Variables available in template:</h2> -->
+    <!-- <p>{{ deck }}</p> -->
+    <!-- <p>{{ deck.user }}</p> -->
+    <!-- <p>{{ deck.user_id }}</p> -->
+    <!-- <p>{{ deck.pk }}</p> -->
+    <!-- <p>{{ deck.id }}</p> -->
+    <!-- <p>{{ deck.cards.all }}</p> -->
+    <!-- <ul> -->
+        <!-- {% for card in cards %} -->
+        <!-- <li>{{ card.id }}</li> -->
+        <!-- <li>{{ card.question }}</li> -->
+        <!-- <li>{{ card.answer }}</li> -->
+        <!-- <li>{{ card.deck }}</li> -->
+        <!-- {% endfor %} -->
+    <!-- </ul> -->
+<!-- </div> -->
+
 {% endblock %}<h1>

@@ -19,7 +19,7 @@ class Deck(models.Model):
 class Card(models.Model):
     question = models.CharField(max_length=250, null=True, blank=True)
     answer = models.CharField(max_length=250, null=True, blank=True)
-    deck = models.ForeignKey(Deck, on_delete=models.CASCADE, related_name="cards")
+    deck = models.ForeignKey(Deck, on_delete=models.CASCADE, related_name="card_deck")
 
     def __str__(self):
         return self.question

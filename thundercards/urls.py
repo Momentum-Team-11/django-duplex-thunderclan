@@ -25,8 +25,6 @@ urlpatterns = [
 
     # base url added to see if base.html is working  delete this later
     path('base/', cards_views.base, name='base'), 
-    # path('list_cards/', cards_views.list_cards, name='list'),
-    path('list_cards/<int:deck_pk>/', cards_views.list_cards, name='list'),
 
     # from django-registration-redux
     path('accounts/', include('registration.backends.default.urls')),
@@ -45,7 +43,7 @@ urlpatterns = [
 
     # show a list of all the cards
     # ryan
-    path("decks/<int:pk>/list_cards", cards_views.list_cards, name="list_cards"), 
+    path("decks/<int:deck_pk>/list_cards/", cards_views.list_cards, name="list_cards"), 
 
     #allows user to delete a deck
     # alex
