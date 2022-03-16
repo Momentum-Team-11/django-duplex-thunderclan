@@ -17,7 +17,7 @@ def home(request):
     if request.user.is_authenticated:
         return redirect ('list_decks')
     else:
-        return render (request, 'flashcard/home.html')
+        return render (request, 'home.html')
 
 def list_cards(request):
     pass
@@ -45,19 +45,18 @@ def show_deck(request, pk):
 
 
 
-def edit_card(request, pk, slug):
-    deck = get_object_or_404(Deck, slug=slug)
-    flashcard = get_object_or_404(Card, pk=pk)
+def edit_card(request, pk,):
+    deck = get_object_or_404(Deck, pk=pk)
+    card = get_object_or_404(Card, pk=pk)
     if request.method == 'POST':
-        form = CardForm(request.POST, instance =flashcard)
+        form = CardForm(request.POST, instance=card)
         if form.is_valid():
-            flashcard.deck_id = deck.id
-            flashcard.save()
-            return redirect (to='list_decks', slug=deck.slug)
+            card.deck_id = deck.id
+            card.save()
+            return redirect (to='list_decks', pk=deck.pk)
     else:
-        form = CardForm(instance=flashcard)
-    return render(request, 'flashcard/edit_card.html', {"form": form, 'deck': deck, 'flashcard':flashcard})
-
+        form = CardForm(instance=card)
+    return render(request, 'edit_card.html', {"form": form, 'deck': deck, 'card':card})
 
 
 
@@ -67,9 +66,10 @@ def edit_deck(request, pk):
 def delete_card(request, pk):
     pass
 
+
 def delete_deck(request, pk):
     deck = get_object_or_404(Deck, pk=pk)
     if request.method == 'POST':
         deck.delete()
-        return redirect(to='list_deck')
-    return render(request, 'delete_deck.html'),{"deck":deck}
+        return redirect(to='list_decks')
+    return render(request, 'delete_deck.html',{"deck":deck})

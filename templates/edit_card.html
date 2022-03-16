@@ -9,7 +9,7 @@
     <h1 class="title">Edit {{ deck.title }}</h1>
 
     <div>
-    <form action="{% url 'edit' pk=card.pk %}" method="POST">
+    <form action="{% url 'edit_card' pk=card.pk %}" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <div>
