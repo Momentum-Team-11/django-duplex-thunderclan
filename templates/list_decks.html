@@ -6,7 +6,7 @@
 <a href={% url 'add_deck' %}>Create New Deck</a>
     {% for deck in decks %}
         <div class="card">   
-            <h2>{{ deck.title }}</h2>
+            <a href="{% url 'list_cards' deck_pk=deck.pk %}">{{ deck.title }}</a>
             <button>Start</button>
             <a href="{% url 'edit_deck' deck_pk=deck.pk %}">Edit</a>
             <a href="{% url 'delete_deck' pk=deck.id %} ">Delete</a>
