@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container ">
+    <h1 class="title is-3">Edit Deck</h1>
+</div>
+
+
+<!-- Working form-->
+<form action="{% url 'edit_deck' deck_pk=deck.pk %}" method="POST">
+    {% csrf_token %}
+    <div class="container mt-4">
+        <h3><strong>Current Title: </strong> {{ deck.title }}</h3>
+        <div class="form-field mt-3">
+            <label><strong>New Title:</strong></label>
+            <input name="title" value="" />
+        </div>
+        <div class="mt3">
+            <button class="button is-info" type="submit">Save</button>
+        </div>
+    </div>
+</form>
+
+
+<!-- <div> -->
+    <!-- <h2>Variables available in template:</h2> -->
+    <!-- <p>{{ deck }}</p> -->
+    <!-- <p>{{ deck.user }}</p> -->
+    <!-- <p>{{ deck.user_id }}</p> -->
+    <!-- <p>{{ deck.pk }}</p> -->
+    <!-- <p>{{ deck.id }}</p> -->
+    <!-- <p>{{ deck.title }}</p> -->
+<!-- </div> -->
+
+
+{% endblock %}<h1>
