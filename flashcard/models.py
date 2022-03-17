@@ -9,7 +9,7 @@ class User(AbstractUser):
         return self.username
 
 class Deck(models.Model):
-    title = models.CharField(max_length=100, null=True, blank=True,)
+    title = models.CharField(max_length=100, default="")
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):

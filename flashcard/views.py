@@ -4,20 +4,12 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from .models import Deck, Card, User
 from .forms import DeckForm, CardForm
 
-#def homepage(request):
-    # show a homepage
-    #if request.user.is_authenticated:
-    #   return redirect("list_decks")
-    #return render(request, "decks/homepage.html")
-
-def base(request):
-    return render(request, 'base.html')
 
 def home(request):
     if request.user.is_authenticated:
-        return redirect ('list_decks')
+        return redirect('list_decks')
     else:
-        return render (request, 'home.html')
+        return render(request, 'home.html')
 
 @login_required
 def list_cards(request, deck_pk):
@@ -25,31 +17,60 @@ def list_cards(request, deck_pk):
     # deck = Deck.objects.get(pk=deck_pk)
     # cards = Card.objects.all().filter(cards_deck_fk=deck.id)
     cards = Card.objects.all()
-    
-    template =  'list_cards.html'
+
+    template = 'list_cards.html'
     context = {
         "deck": deck,
         "cards": cards,
     }
     return render(request, template, context)
 
+
 @login_required
 def list_decks(request):
     decks = Deck.objects.all()
     user = request.user
-        
+
     return render(request, 'list_decks.html', {"decks": decks, "user": user})
 
-    
+@login_required
+def add_card(request, pk):
+    deck = get_object_or_404(Deck, pk=pk)
+    if request.method == 'POST':
+        card_form = CardForm(data=request.POST)
+        if card_form.is_valid():
+            card = card_form.save(commit=False)
+            card.user = request.user
+            card.deck_id = deck.pk
+            card.save()
+            
+            return redirect("list_cards", deck_pk=deck.id)
+    else:
+        card_form = CardForm()
 
-def add_card(request):
-    pass
+    return render(request, "add_card.html", {"card_form": card_form, "deck": deck, "pk": pk})
 
+# use breakpoint, print variables to see data in the terminal
+
+@login_required
 def add_deck(request):
-    pass
+    if request.method == 'POST':
+        deck_form = DeckForm(data=request.POST)
+        if deck_form.is_valid():
+            deck = deck_form.save(commit=False)
+            deck.user = request.user
+            deck.save()
+
+            return redirect("list_decks")
+    else:
+        deck_form = DeckForm()
+
+    return render(request, "add_deck.html", {"deck_form": deck_form})
+
 
 def show_card(request, pk):
     pass
+
 
 def show_deck(request, pk):
     pass
@@ -71,8 +92,10 @@ def edit_card(request, pk,):
 
 
 
+
 def edit_deck(request, pk):
     pass
+
 
 def delete_card(request, pk):
     pass
