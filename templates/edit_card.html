@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title> Edit Cards</title>
+{% endblock %}
+
+{% block content %}
+<div>
+    <h1 class="title">Edit {{ deck.title }}</h1>
+
+    <div>
+    <form action="{% url 'edit_card' pk=card.pk %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div>
+        <button type="submit">Update</button>
+        </div>
+    </form>
+    </div>
+</div>
+{% endblock %}
