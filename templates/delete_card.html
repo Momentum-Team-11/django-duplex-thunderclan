@@ -3,16 +3,26 @@
 
 {% block content %}
 <h1>Delete Card</h1>
+
 <div>
-    <form action="{% url 'delete_deck' pk=deck.id %}" method="POST">
+    <form action="{% url 'delete_card' deck_pk=deck.id card_pk=card.id %}" method="POST">
         {% csrf_token %}
-        <p>Would you like to delete {{ deck.title }}?</p>
+        <p>Would you like to delete {{ card.title }}?</p>
     <div>
         <button type="submit">Delete </button><br />
-        <a href="{% url 'list_decks' %}">Cancel</a>
+        <a href="{% url 'list_cards' deck_pk=deck.pk %}">Cancel</a>
         </div>
         </form>
-   
-        
+    
 </div>
+
+
+{% comment %} 
+<div>
+    <p>{{ deck }}</p>
+    <p>{{ deck. }}</p>
+</div> {% endcomment %}
+
+
+
 {% endblock %}

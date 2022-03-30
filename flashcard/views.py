@@ -111,8 +111,20 @@ def edit_deck(request, deck_pk):
     return render(request, template, context)
 
 
-def delete_card(request, pk):
-    pass
+def delete_card(request, deck_pk, card_pk):
+    deck = get_object_or_404(Deck, pk=deck_pk)
+    card = Card.objects.get(pk=card_pk)
+
+    template = 'delete_card.html'
+    context = {
+        'deck': deck,
+        'card': card,
+    }
+
+    if request.method == 'POST':
+        card.delete()
+        return redirect(to='list_cards', deck_pk=deck.id)
+    return render(request, template, context)
 
 
 def delete_deck(request, pk):

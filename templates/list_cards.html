@@ -25,8 +25,9 @@
                     <p class="title is-4 has-text-centered">Card {{ card.id }}</p>
                     <div class="box">{{ card.question }}</div>
                     <div class="box">{{ card.answer }}</div>
-                    <button class="button is-danger is-small is-pulled-right">Delete</button>
-                    <button class="button is-info is-small is-pulled-right mr-2">Edit</button>
+                    <!-- <button class="button is-danger is-small is-pulled-right">Delete</button> -->
+                    <button class="button is-info is-small is-pulled-mr-2">Edit</button>
+                    <a href="{% url 'delete_card' deck_pk=deck.pk card_pk=card.pk %}">Delete</a>
                 </div>
             </div>
         </div>
@@ -45,6 +46,7 @@
     <!-- <ul> -->
         <!-- {% for card in cards %} -->
         <!-- <li>{{ card.id }}</li> -->
+        <!-- <li>{{ card.pk }}</li> -->
         <!-- <li>{{ card.question }}</li> -->
         <!-- <li>{{ card.answer }}</li> -->
         <!-- <li>{{ card.deck }}</li> -->
