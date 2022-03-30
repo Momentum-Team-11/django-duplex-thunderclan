@@ -5,12 +5,38 @@ Flash Cards
 {% endblock %}
 
 {% block content %}
-<h1>Note Cards.</h1>
-<h1>For Warriors.</h1> 
-<br>Sign up for beta access or log into your account
+<!-- <h1>Note Cards.</h1> -->
+<!-- <h1>For Warriors.</h1>  -->
+<!-- <br>Sign up for beta access or log into your account -->
 
 
-<br>
-<a href={% url 'registration_register' %} class="moon-gray ml3 no-underline">Sign Up</a>
-<a href={% url 'auth_login' %} class="moon-gray ml2 no-underline">Log In</a>
+<!-- <br> -->
+<!-- <a href={% url 'registration_register' %} class="moon-gray ml3 no-underline">Sign Up</a> -->
+<!-- <a href={% url 'auth_login' %} class="moon-gray ml2 no-underline">Log In</a> -->
+
+
+
+<article class="mw7 center ph3 ph5-ns tc br2 pv5 bg-washed-green dark-green mb5">
+    <h1 class="fw6 f3 f2-ns lh-title mt0 mb3">
+        Note Cards.
+    </h1>
+    <h1 class="fw6 f3 f2-ns lh-title mt0 mb3">
+        From the Thunderclan.
+    </h1>
+    <h2 class="fw2 f4 lh-copy mt0 mb3">
+        Sign up for beta access or log in to your account.
+    </h2>
+    <div>
+        <a class="f6 br-pill bg-dark-green no-underline washed-green ba b--dark-green grow pv2 ph3 dib mr3" href={%
+            url 'registration_register' %}>
+            Sign Up
+        </a>
+        <a class="f6 br-pill dark-green no-underline ba grow pv2 ph3 dib" href="{% url 'auth_login' %}">
+            Log In
+        </a>
+    </div>
+</article>
+
+
+
 {% endblock %}
